@@ -1,0 +1,25 @@
+version: "3"
+services:
+    frontend:
+        restart: on-failure
+        build: ./frontend
+        command: npm run dev -- --host
+        ports:
+            - 3000:3000
+            - 24678:24678
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules
+    backend:
+    backend:
+        build: ./backend
+        ports:
+            - 2000:2000
+    docudb:
+        image: mongo
+    reldb:
+        image: mysql
+        environment: 
+            - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    graphdb:
+        image: neo4j

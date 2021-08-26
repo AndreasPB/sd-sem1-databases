@@ -1,0 +1,1 @@
+# School project for the class 'Databases for system developers'
