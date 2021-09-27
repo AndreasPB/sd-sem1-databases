@@ -1,8 +1,9 @@
-version: "3"
+version: "3.3"
 services:
     frontend:
         restart: on-failure
         build: ./frontend
+        container_name: frontend
         command: npm run dev -- --host
         ports:
             - 3000:3000
@@ -11,16 +12,32 @@ services:
             - ./frontend:/app
             - /app/node_modules
     backend:
+        restart: always
         build: ./backend
+        container_name: backend
+        # command: ["sleep", "15s"]
         ports:
             - 2000:2000
-    docudb:
-        image: mongo
-    reldb:
+        depends_on:
+        #    - docu_db
+            - rel_db
+        #    - graph_db
+        links:
+            - rel_db
+    # docu_db:
+    #     image: mongo
+    rel_db:
         image: postgres
+        container_name: rel_db
         environment: 
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
           POSTGRES_DB: mandatory
-    graphdb:
-        image: neo4j
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+    # graph_db:
+    #    image: neo4j
+volumes:
+    pgdata:
