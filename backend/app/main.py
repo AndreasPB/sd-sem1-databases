@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.routers import root, document, graph, relational
+from routers import root, document, graph, relational
 
 app = FastAPI()
 
