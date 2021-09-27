@@ -18,6 +18,7 @@ from sqlalchemy.util.langhelpers import monkeypatch_proxied_specials
 #     RUNNER = "runner"
 #     CAMERA_MAN = "camera man"
 
+
 class BaseConfig(BaseModel):
     class Config:
         orm_mode = True

@@ -50,7 +50,9 @@ def get_countries(db: Session, skip: int = 0, limit: int = 100):
 
 def create_country(db: Session, country: schemas.Country):
     """Adds a country-type to the database"""
-    db_country = models.Country(id=country.id, name=country.name, country_code=country.country_code)
+    db_country = models.Country(
+        id=country.id, name=country.name, country_code=country.country_code
+    )
     db.add(db_country)
     db.commit()
     db.refresh(db_country)
@@ -86,7 +88,9 @@ def get_providers(db: Session, skip: int = 0, limit: int = 100):
 
 def create_provider(db: Session, provider: schemas.Provider):
     """Adds a provider-type to the database"""
-    db_provider = models.Provider(id=provider.id, name=provider.name, poster_path=provider.poster_path)
+    db_provider = models.Provider(
+        id=provider.id, name=provider.name, poster_path=provider.poster_path
+    )
     db.add(db_provider)
     db.commit()
     db.refresh(db_provider)
