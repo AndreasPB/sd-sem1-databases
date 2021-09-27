@@ -60,7 +60,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(15))
     email = Column(String(50))
-    media = relationship("Media", secondary=user_media_association_table, nullable=True)
+    media = relationship("Media", secondary=user_media_association_table)
 
 
 class Person(Base):

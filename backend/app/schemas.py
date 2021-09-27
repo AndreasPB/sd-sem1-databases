@@ -1,25 +1,9 @@
-import enum
+# import enum
 from typing import Optional
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, validator, Field
+from pydantic.types import constr
 from sqlalchemy.orm import Query
-
-
-class OrmBase(BaseModel):
-    # Common properties across orm models
-    id: int
-
-    # Pre-processing validator that evaluates lazy relationships before any other validation
-    # NOTE: If high throughput/performance is a concern, you can/should probably apply
-    #       this validator in a more targeted fashion instead of a wildcard in a base class.
-    #       This approach is by no means slow, but adds a minor amount of overhead for every field
-    @validator("*", pre=True)
-    def evaluate_lazy_columns(cls, v):
-        if isinstance(v, Query):
-            return v.all()
-        return v
-
-    class Config:
-        orm_mode = True
+from sqlalchemy.util.langhelpers import monkeypatch_proxied_specials
 
 
 ### Enums ###
@@ -34,40 +18,45 @@ class OrmBase(BaseModel):
 #     RUNNER = "runner"
 #     CAMERA_MAN = "camera man"
 
+class BaseConfig(BaseModel):
+    class Config:
+        orm_mode = True
 
-class Person(OrmBase):
+
+class Person(BaseConfig):
     id: int
     name: str
     job: str
+    # media: Optional[str]
 
 
-class User(OrmBase):
+class User(BaseConfig):
     id: int
     username: str
     email: str
-    media: Optional[str]
+    # media: Optional[str]
 
 
-class Country(OrmBase):
+class Country(BaseConfig):
     id: int
     name: str
-    country_code: str
+    country_code: str = Field(..., max_length=2)
 
 
-class Genre(OrmBase):
+class Genre(BaseConfig):
     id: int
     name: str
 
 
-class Provider(OrmBase):
+class Provider(BaseConfig):
     id: int
     name: str
     poster_path: str
 
 
-class Media(OrmBase):
+class Media(BaseConfig):
     id: int
     name: str
     media_type: str
-    person: Person
-    provider: Provider
+    # person: Person
+    # provider: Provider
