@@ -41,7 +41,7 @@ class User(BaseConfig):
 class Country(BaseConfig):
     id: int
     name: str
-    country_code: str = Field(..., max_length=2)
+    # country_code: str = Field(..., max_length=2)
 
 
 class Genre(BaseConfig):

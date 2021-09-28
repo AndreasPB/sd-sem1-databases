@@ -26,7 +26,6 @@ person_media_association_table = Table(
     Column("media_id", ForeignKey("media.id")),
 )
 
-
 user_media_association_table = Table(
     "user_media",
     Base.metadata,
@@ -34,6 +33,12 @@ user_media_association_table = Table(
     Column("media_id", ForeignKey("media.id")),
 )
 
+genre_media_association_table = Table(
+    "genre_media",
+    Base.metadata,
+    Column("genre_id", ForeignKey("genre.id")),
+    Column("media_id", ForeignKey("media.id")),
+)
 
 provider_media_association_table = Table(
     "provider_media",
@@ -52,6 +57,7 @@ class Media(Base):
     media_type = Column(String(25))
     person = relationship("Person", secondary=person_media_association_table)
     provider = relationship("Provider", secondary=provider_media_association_table)
+    genre = relationship("Genre", secondary=genre_media_association_table)
 
 
 class User(Base):
@@ -60,6 +66,8 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(15))
     email = Column(String(50))
+    country_id = Column(Integer, ForeignKey("country.id"))
+    country = relationship("Country", back_populates="user")
     media = relationship("Media", secondary=user_media_association_table)
 
 
@@ -69,6 +77,8 @@ class Person(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     job = Column(String(25))
+    country_id = Column(Integer, ForeignKey("country.id"))
+    country = relationship("Country", back_populates="person")
     media = relationship("Media", secondary=person_media_association_table)
 
 
@@ -77,6 +87,7 @@ class Genre(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(25))
+    media = relationship("Media", secondary=genre_media_association_table)
 
 
 class Provider(Base):
@@ -94,3 +105,5 @@ class Country(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
     country_code = Column(String(2))
+    people = relationship("Person", back_populates="country")
+    users = relationship("User", back_populates="country")
