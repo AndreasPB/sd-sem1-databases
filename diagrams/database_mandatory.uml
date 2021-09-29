@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.country</OriginalElement>
+  <nodes>
+    <node x="79.91952139500374" y="347.0">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.genre</node>
+    <node x="688.6381709126886" y="177.5">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.user_media</node>
+    <node x="381.0288461538462" y="543.5">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.person</node>
+    <node x="80.41952139500376" y="177.5">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.genre_media</node>
+    <node x="679.1381709126886" y="543.5">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.country</node>
+    <node x="365.0288461538462" y="177.5">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.media</node>
+    <node x="363.5288461538462" y="-121.5">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.provider</node>
+    <node x="688.1381709126886" y="347.0">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.user</node>
+    <node x="381.0288461538462" y="347.0">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.person_media</node>
+    <node x="375.0288461538462" y="46.0">3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.provider_media</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.person_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.person" relationship="REFERENCES">
+      <point x="1.0" y="40.0" />
+      <point x="0.0" y="-63.5" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.user_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.media" relationship="REFERENCES">
+      <point x="-67.5" y="12.0" />
+      <point x="87.0" y="0.0" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.person" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.country" relationship="REFERENCES">
+      <point x="72.0" y="-11.5" />
+      <point x="-89.0" y="0.0" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.user" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.country" relationship="REFERENCES">
+      <point x="0.0" y="63.5" />
+      <point x="0.0" y="-52.0" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.genre_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.genre" relationship="REFERENCES">
+      <point x="0.0" y="40.0" />
+      <point x="0.0" y="-40.5" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.user_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.user" relationship="REFERENCES">
+      <point x="12.0" y="40.0" />
+      <point x="0.0" y="-63.5" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.genre_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.media" relationship="REFERENCES">
+      <point x="67.5" y="12.0" />
+      <point x="-87.0" y="0.0" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.provider_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.media" relationship="REFERENCES">
+      <point x="0.0" y="40.0" />
+      <point x="0.0" y="-52.0" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.person_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.media" relationship="REFERENCES">
+      <point x="0.0" y="-40.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.provider_media" target="3878f242-db6c-4bbb-a3a7-2a5d4f3615c0.TABLE:mandatory.public.provider" relationship="REFERENCES">
+      <point x="0.0" y="-40.0" />
+      <point x="0.0" y="52.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="468.5" y="274.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

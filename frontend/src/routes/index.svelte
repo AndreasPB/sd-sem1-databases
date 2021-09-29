@@ -36,14 +36,16 @@
                             <th />
                             <th>Username</th>
                             <th>Email</th>
+                            <th>Country ID</th>
                         </tr>
                     </thead>
                     {#each users as user}
                         <tbody>
-                            <tr>
+                            <tr class="hover">
                                 <th>{user.id}</th>
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
+                                <td>{user.country_id}</td>
                             </tr>
                         </tbody>
                     {/each}
@@ -66,7 +68,7 @@
                     </thead>
                     {#each medias as media}
                         <tbody>
-                            <tr>
+                            <tr class="hover">
                                 <th>{media.id}</th>
                                 <td>{media.name}</td>
                                 <td>{media.media_type}</td>

@@ -28,20 +28,20 @@ class Person(BaseConfig):
     id: int
     name: str
     job: str
-    # media: Optional[str]
+    country_id: int
 
 
 class User(BaseConfig):
     id: int
     username: str
     email: str
-    # media: Optional[str]
+    country_id: int
 
 
 class Country(BaseConfig):
     id: int
     name: str
-    # country_code: str = Field(..., max_length=2)
+    country_code: str = Field(..., max_length=2)
 
 
 class Genre(BaseConfig):
@@ -59,5 +59,3 @@ class Media(BaseConfig):
     id: int
     name: str
     media_type: str
-    # person: Person
-    # provider: Provider

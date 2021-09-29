@@ -67,7 +67,7 @@ class User(Base):
     username = Column(String(15))
     email = Column(String(50))
     country_id = Column(Integer, ForeignKey("country.id"))
-    country = relationship("Country", back_populates="user")
+    country = relationship("Country", back_populates="users")
     media = relationship("Media", secondary=user_media_association_table)
 
 
@@ -78,7 +78,7 @@ class Person(Base):
     name = Column(String(100))
     job = Column(String(25))
     country_id = Column(Integer, ForeignKey("country.id"))
-    country = relationship("Country", back_populates="person")
+    country = relationship("Country", back_populates="people")
     media = relationship("Media", secondary=person_media_association_table)
 
 
