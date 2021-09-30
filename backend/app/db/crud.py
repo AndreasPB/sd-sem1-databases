@@ -108,7 +108,7 @@ def get_medias(db: Session, skip: int = 0, limit: int = 100):
 
 def create_media(db: Session, media: schemas.Media):
     """Adds a media-type to the database"""
-    db_media = models.Media(id=media.id, name=media.name, poster_path=media.poster_path)
+    db_media = models.Media(id=media.id, name=media.name, media_type=media.media_type)
     db.add(db_media)
     db.commit()
     db.refresh(db_media)
