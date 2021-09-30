@@ -20,7 +20,7 @@ async def read_genre(genre_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=List[Genre])
-async def read_people(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+async def read_genres(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return get_genres(db=db, skip=skip, limit=limit)
 
 

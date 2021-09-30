@@ -20,4 +20,4 @@ EXPOSE 3000
 EXPOSE 24678
 
 # Run and set the host to 0.0.0.0 so we can access the web app from outside
-# CMD ["npm", "run", "dev", "--host", "0.0.0.0"]
+CMD ["npm", "run", "dev", "--host", "0.0.0.0"]

@@ -20,7 +20,7 @@ async def read_provider(provider_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=List[Provider])
-async def read_people(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+async def read_providers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return get_providers(db=db, skip=skip, limit=limit)
 
 

@@ -20,7 +20,7 @@ async def read_media(media_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=List[Media])
-async def read_people(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+async def read_medias(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return get_medias(db=db, skip=skip, limit=limit)
 
 
