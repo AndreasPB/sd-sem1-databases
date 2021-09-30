@@ -3,9 +3,8 @@ from sqlalchemy import text
 
 
 def create_stored_procedure(db: Session, table: str):
-    #query = f"CREATE PROCEDURE selectall{table}() LANGUAGE SQL AS $$ SELECT * FROM MEDIA $$; CALL selectall{table}()"
+    query = f"CREATE PROCEDURE selectall{table}() LANGUAGE SQL AS $$ SELECT * FROM MEDIA $$"
 
-    query = text('SELECT * FROM media')
     return db.execute(query)
 
 
@@ -27,4 +26,5 @@ def exec_stored_function(db: Session):
 
 
 def populate_database():
-    pass
+    """Is currently done in DataGrip using the datasets scripts"""
+    ...
