@@ -1,4 +1,3 @@
-from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -18,7 +17,7 @@ async def read_person(person_id: int, db: Session = Depends(get_db)):
     raise HTTPException(status_code=404, detail="Person doesn't exist")
 
 
-@router.get("/", response_model=List[Person])
+@router.get("/", response_model=list[Person])
 async def read_people(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return get_people(db=db, skip=skip, limit=limit)
 
