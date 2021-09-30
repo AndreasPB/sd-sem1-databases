@@ -1,3 +1,4 @@
+from typing import List
 from sqlalchemy.orm import Session
 import db.models as models
 import schemas
@@ -98,15 +99,15 @@ def create_provider(db: Session, provider: schemas.Provider):
 
 
 ### Media ###
-def get_media(db: Session, media_id: int):
+def get_media(db: Session, media_id: int) -> models.Media:
     return db.query(models.Media).filter(models.Media.id == media_id).first()
 
 
-def get_medias(db: Session, skip: int = 0, limit: int = 100):
+def get_medias(db: Session, skip: int = 0, limit: int = 100) -> List[models.Media]:
     return db.query(models.Media).offset(skip).limit(limit).all()
 
 
-def create_media(db: Session, media: schemas.Media):
+def create_media(db: Session, media: schemas.Media) -> models.Media:
     """Adds a media-type to the database"""
     db_media = models.Media(id=media.id, name=media.name, media_type=media.media_type)
     db.add(db_media)
