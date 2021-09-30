@@ -1,3 +1,4 @@
+from typing import List
 from sqlalchemy.orm import Session
 import db.models as models
 import schemas
@@ -102,7 +103,7 @@ def get_media(db: Session, media_id: int) -> models.Media:
     return db.query(models.Media).filter(models.Media.id == media_id).first()
 
 
-def get_medias(db: Session, skip: int = 0, limit: int = 100) -> list[models.Media]:
+def get_medias(db: Session, skip: int = 0, limit: int = 100) -> List[models.Media]:
     return db.query(models.Media).offset(skip).limit(limit).all()
 
 

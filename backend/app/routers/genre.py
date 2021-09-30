@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
@@ -18,7 +19,7 @@ async def read_genre(genre_id: int, db: Session = Depends(get_db)):
     raise HTTPException(status_code=404, detail="Country doesn't exist")
 
 
-@router.get("/", response_model=list[Genre])
+@router.get("/", response_model=List[Genre])
 async def read_genres(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return get_genres(db=db, skip=skip, limit=limit)
 
