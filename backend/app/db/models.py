@@ -1,8 +1,9 @@
-import enum
 from sqlalchemy import String, Integer, Enum, Table
 from sqlalchemy.sql.schema import Column, ForeignKey
-from db.database import Base
+from db.database import Base, engine
 from sqlalchemy.orm import relationship
+from sqlalchemy_utils import create_view
+from sqlalchemy import select, func
 
 
 ### Enums ###
@@ -107,3 +108,30 @@ class Country(Base):
     country_code = Column(String(2))
     people = relationship("Person", back_populates="country")
     users = relationship("User", back_populates="country")
+
+
+# ### Views ###
+# stmt = (
+#     select(
+#         [
+#             User.id.label("user_id"),
+#             User.username,
+#             Media.id.label("media_id"),
+#             Media.name,
+#         ]
+#     )
+#     .select_from(
+#         User.__table__.join(
+#             user_media_association_table, User.id == user_media_association_table.c.user_id
+#         )
+#     )
+#     .select_from(
+#         User.__table__.join(Media, Media.id == user_media_association_table.c.user_id)
+#     )
+# )
+# 
+# view = create_view("user_media_view", stmt, Base.metadata)
+# 
+# 
+# class UserMediaView(Base):
+#     __table__ = view
