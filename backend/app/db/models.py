@@ -1,6 +1,6 @@
 from sqlalchemy import String, Integer, Enum, Table
 from sqlalchemy.sql.schema import Column, ForeignKey
-from db.database import Base, engine
+from app.db.database import Base, engine
 from sqlalchemy.orm import relationship
 from sqlalchemy_utils import create_view
 from sqlalchemy import select, func

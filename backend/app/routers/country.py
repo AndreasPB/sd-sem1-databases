@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
 
-from schemas import Country
-from db.database import get_db
-from db.crud import create_country, get_country, get_countries
+from app.schemas import Country
+from app.db.database import get_db
+from app.db.crud import create_country, get_country, get_countries
 
 
 router = APIRouter(prefix="/country", tags=["country"])

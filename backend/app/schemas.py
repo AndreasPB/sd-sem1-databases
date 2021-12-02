@@ -1,5 +1,7 @@
 # import enum
+import strawberry
 from pydantic import BaseModel, Field
+from strawberry.fastapi.router import GraphQLRouter
 
 
 ### Enums ###
@@ -55,3 +57,39 @@ class Media(BaseConfig):
     id: int
     name: str
     media_type: str
+
+
+@strawberry.experimental.pydantic.type(model=Country, all_fields=True)
+class CountryType:
+    pass
+    
+
+@strawberry.experimental.pydantic.type(model=Person)
+class PersonType:
+    id: strawberry.auto
+    name: strawberry.auto
+    job: strawberry.auto
+    country: CountryType
+
+
+@strawberry.experimental.pydantic.type(model=User)
+class UserType:
+    id: strawberry.auto
+    username: strawberry.auto
+    email: strawberry.auto
+    country: CountryType
+
+
+@strawberry.experimental.pydantic.type(model=Genre, all_fields=True)
+class GenreType:
+    pass
+
+
+@strawberry.experimental.pydantic.type(model=Provider, all_fields=True)
+class ProviderType:
+    pass
+
+
+@strawberry.experimental.pydantic.type(model=Media, all_fields=True)
+class MediaType:
+    pass

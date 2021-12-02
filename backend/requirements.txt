@@ -2,3 +2,4 @@ sqlalchemy
 sqlalchemy_utils
 psycopg2
 typer
+strawberry-graphql[fastapi]
