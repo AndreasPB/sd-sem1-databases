@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
 
-from schemas import Media
-from db.database import get_db
-from db.crud import create_media, get_media, get_medias
+from app.schemas import Media
+from app.db.database import get_db
+from app.db.crud import create_media, get_media, get_medias
 
 
 router = APIRouter(prefix="/media", tags=["media"])

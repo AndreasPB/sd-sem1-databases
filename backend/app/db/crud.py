@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-import db.models as models
-import schemas
+from app import schemas
+from app.db import models
 
 
 ### Person ###

@@ -1,16 +1,21 @@
+import asyncio
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from db.models import Base
-
-from db.database import engine
-from routers import root, person, user, country, genre, provider, media
-
-
-Base.metadata.create_all(bind=engine)
+from app.db.models import Base
+from app.db.database import engine
+from app.routers import root, person, user, country, genre, provider, media
+from app.routers.graphql import index
+from app.routers.graphql.schema import graphql_schema
 
 
 app = FastAPI()
+
+@app.on_event("startup")
+async def setup_postgres():
+    await asyncio.sleep(2)
+    Base.metadata.create_all(bind=engine)
 
 origins = [
     "http://localhost:8080",
@@ -28,7 +33,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+app.include_router(index.graphql_app, prefix="/v1/graphql", tags=["graphql"])
+app.include_router(graphql_schema, prefix="/v2/graphql", tags=["graphql"])
 app.include_router(root.router)
 app.include_router(person.router)
 app.include_router(user.router)

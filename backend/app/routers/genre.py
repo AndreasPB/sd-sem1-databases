@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
 
-from schemas import Genre
-from db.database import get_db
-from db.crud import create_genre, get_genre, get_genres
+from app.schemas import Genre
+from app.db.database import get_db
+from app.db.crud import create_genre, get_genre, get_genres
 
 
 router = APIRouter(prefix="/genre", tags=["genre"])

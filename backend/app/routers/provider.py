@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
 
-from schemas import Provider
-from db.database import get_db
-from db.crud import create_provider, get_provider, get_providers
+from app.schemas import Provider
+from app.db.database import get_db
+from app.db.crud import create_provider, get_provider, get_providers
 
 
 router = APIRouter(prefix="/provider", tags=["provider"])

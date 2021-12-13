@@ -1,9 +1,10 @@
 from sqlalchemy import String, Integer, Enum, Table
 from sqlalchemy.sql.schema import Column, ForeignKey
-from db.database import Base, engine
-from sqlalchemy.orm import relationship
+from app.db.database import Base, engine
+from sqlalchemy.orm import joinedload, relationship
 from sqlalchemy_utils import create_view
 from sqlalchemy import select, func
+from sqlalchemy.orm import Session
 
 
 ### Enums ###
@@ -108,6 +109,18 @@ class Country(Base):
     country_code = Column(String(2))
     people = relationship("Person", back_populates="country")
     users = relationship("User", back_populates="country")
+
+
+def get_users(db: Session, limit: int = 250):
+    query = (
+        select(User)
+        .options(joinedload(User.country), joinedload(User.media))
+        .order_by(User.username.desc())
+        .limit(limit)
+    )
+
+    result = db.execute(query).unique()
+    return result.scalars()
 
 
 # ### Views ###
