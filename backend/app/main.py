@@ -1,18 +1,21 @@
+import asyncio
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.db.models import Base
-
 from app.db.database import engine
 from app.routers import root, person, user, country, genre, provider, media
 from app.routers.graphql import index
 from app.routers.graphql.schema import graphql_schema
 
 
-Base.metadata.create_all(bind=engine)
-
-
 app = FastAPI()
+
+@app.on_event("startup")
+async def setup_postgres():
+    await asyncio.sleep(2)
+    Base.metadata.create_all(bind=engine)
 
 origins = [
     "http://localhost:8080",

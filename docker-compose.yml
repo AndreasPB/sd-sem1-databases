@@ -21,13 +21,11 @@ services:
         ports:
             - 2000:2000
         depends_on:
-        #    - docu_db
+            # - docu_db
             - rel_db
-            - graph_db
+            # - graph_db
         links:
             - rel_db
-    # docu_db:
-    #     image: mongo
 
     rel_db:
         image: postgres
@@ -41,22 +39,22 @@ services:
         ports:
             - 5432:5432
 
-    graph_db:
-        image: neo4j
-        restart: unless-stopped
-        ports:
-            - 7474:7474
-            - 7687:7687
-        container_name: graph_db
-        volumes:
-            - ./conf:/conf
-            - ./data:/data
-            - ./import:/import
-            - ./logs:/logs
-            - ./plugins:/plugins
-        environment:
-            - NEO4J_AUTH=none
-            - NEO4J_dbms_security_auth__enabled=false
+    # graph_db:
+    #     image: neo4j
+    #     restart: unless-stopped
+    #     ports:
+    #         - 7474:7474
+    #         - 7687:7687
+    #     container_name: graph_db
+    #     volumes:
+    #         - ./conf:/conf
+    #         - ./data:/data
+    #         - ./import:/import
+    #         - ./logs:/logs
+    #         - ./plugins:/plugins
+    #     environment:
+    #         - NEO4J_AUTH=none
+    #         - NEO4J_dbms_security_auth__enabled=false
 
 volumes:
     pgdata:
