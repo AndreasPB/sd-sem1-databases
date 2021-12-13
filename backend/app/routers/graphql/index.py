@@ -2,6 +2,7 @@ import strawberry
 from strawberry.fastapi import GraphQLRouter
 from app.schemas import PersonType, UserType, CountryType
 
+
 denmark = CountryType(id=1, name="Denmark", country_code="DK")
 sweden = CountryType(id=2, name="Sweden", country_code="SE")
 norway = CountryType(id=3, name="Norway", country_code="NO")

@@ -3,3 +3,4 @@ sqlalchemy_utils
 psycopg2
 typer
 strawberry-graphql[fastapi]
+neo4j
