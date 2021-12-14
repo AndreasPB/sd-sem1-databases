@@ -2,15 +2,6 @@ from pydantic import BaseModel, Field
 from typing import Optional
 from bson import ObjectId
 
-
-class BaseConfig(BaseModel):
-    class Config:
-        arbitrary_types_allowed = True
-        json_encoders = {
-            ObjectId: str
-        }
-
-
 class PyObjectId(ObjectId):
 
     @classmethod
@@ -28,38 +19,50 @@ class PyObjectId(ObjectId):
         field_schema.update(type='string')
 
 
-class Person(BaseConfig):
-    id: Optional[PyObjectId] = Field(alias='_id')    
-    name: str
-    job: str
-    country_id: int
-
-
-class User(BaseConfig):
-    id: Optional[PyObjectId] = Field(alias='_id')    
-    username: str
-    email: str
-    country_id: int
+class BaseConfig(BaseModel):
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {
+            ObjectId: str
+        }
 
 
 class Country(BaseConfig):
-    id: Optional[PyObjectId] = Field(alias='_id')    
+    _id: Optional[PyObjectId]
     name: str
     country_code: str = Field(..., max_length=2)
 
+class Person(BaseConfig):
+    _id: Optional[PyObjectId]
+    name: str
+    job: str
+    country: Country
+
 
 class Genre(BaseConfig):
-    id: Optional[PyObjectId] = Field(alias='_id')    
+    _id: Optional[PyObjectId]
     name: str
 
 
 class Provider(BaseConfig):
-    id: Optional[PyObjectId] = Field(alias='_id')    
+    _id: Optional[PyObjectId]
     name: str
+    url: str
     poster_path: str
 
 
 class Media(BaseConfig):
-    id: Optional[PyObjectId] = Field(alias='_id')    
+    _id: Optional[PyObjectId]    
     name: str
     media_type: str
+    people: Optional[list[Person]]
+    genres: Optional[list[Genre]]
+    providers: Optional[list[Provider]]
+
+
+class User(BaseConfig):
+    _id: Optional[PyObjectId]
+    username: str
+    email: str
+    country: Country
+    favorites: Optional[list[Media]]
