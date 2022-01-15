@@ -8,6 +8,7 @@ from app.db.database import engine
 from app.routers import root, person, user, country, genre, provider, media
 from app.routers.graphql import index
 from app.routers.graphql.schema import graphql_schema
+from app.db.mongo import mongo
 
 
 app = FastAPI()
