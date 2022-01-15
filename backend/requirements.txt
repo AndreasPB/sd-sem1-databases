@@ -4,3 +4,4 @@ psycopg2
 typer
 strawberry-graphql[fastapi]
 pymongo
+py2neo
