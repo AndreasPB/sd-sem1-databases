@@ -18,7 +18,7 @@ async def setup_dbs():
     await asyncio.sleep(2)
     Base.metadata.create_all(bind=engine)
     from app.db.graph import graph
-    graph.populate_graph()
+    await graph.populate_graph()
 
 origins = [
     "http://localhost:8080",

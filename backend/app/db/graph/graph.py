@@ -1,5 +1,5 @@
+import asyncio
 from datetime import datetime
-from re import L
 from py2neo import Graph
 from py2neo.ogm import (
     Model,
@@ -11,9 +11,6 @@ from py2neo.ogm import (
     Label,
 )
 
-
-graph = Graph("bolt://graph_db:7687")
-repo = Repository("bolt://graph_db:7687")
 
 
 class Media(Model):
@@ -161,8 +158,16 @@ lotr_cast = [
 ]
 
 
-def populate_graph():
-    graph.delete_all()
+async def populate_graph():
+    for _ in range(5):
+        try:
+            repo = Repository("bolt://graph_db:7687")
+            graph = Graph("bolt://graph_db:7687")
+
+            graph.delete_all()
+        except Exception as e:
+            print(e, "\nTrying again in 2 seconds")
+            await asyncio.sleep(2)
 
     # Countries
     for country in countries.values():
