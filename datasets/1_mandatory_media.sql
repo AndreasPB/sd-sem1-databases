@@ -1,4 +1,4 @@
-INSERT INTO public.media (id, name, media_type) VALUES (1, 'Finding Nemo', 'Movie');
-INSERT INTO public.media (id, name, media_type) VALUES (2, 'Lord of the Rings', 'Movie');
-INSERT INTO public.media (id, name, media_type) VALUES (3, 'Friends', 'TV');
-INSERT INTO public.media (id, name, media_type) VALUES (4, 'Community', 'TV');
+INSERT INTO public.media (name, media_type) VALUES ('Finding Nemo', 'Movie');
+INSERT INTO public.media (name, media_type) VALUES ('Lord of the Rings', 'Movie');
+INSERT INTO public.media (name, media_type) VALUES ('Friends', 'TV');
+INSERT INTO public.media (name, media_type) VALUES ('Community', 'TV');

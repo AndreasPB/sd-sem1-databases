@@ -1,3 +1,3 @@
-INSERT INTO public.person (id, name, job, country_id) VALUES (1, 'Ian McKellen', 'Actor', 2);
-INSERT INTO public.person (id, name, job, country_id) VALUES (2, 'Viggo Mortensen ', 'Actor', 1);
-INSERT INTO public.person (id, name, job, country_id) VALUES (3, 'Peter Jackson ', 'Director', 3);
+INSERT INTO public.person (name, job, country_id) VALUES ('Ian McKellen', 'Actor', 2);
+INSERT INTO public.person (name, job, country_id) VALUES ('Viggo Mortensen ', 'Actor', 1);
+INSERT INTO public.person (name, job, country_id) VALUES ('Peter Jackson ', 'Director', 3);
