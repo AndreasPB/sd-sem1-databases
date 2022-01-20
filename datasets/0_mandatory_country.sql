@@ -1,3 +1,3 @@
-INSERT INTO public.country (id, name, country_code) VALUES (1, 'Denmark', 'DK');
-INSERT INTO public.country (id, name, country_code) VALUES (2, 'Sweden', 'SE');
-INSERT INTO public.country (id, name, country_code) VALUES (3, 'Norway', 'NO');
+INSERT INTO public.country (name, country_code) VALUES ('Denmark', 'DK');
+INSERT INTO public.country (name, country_code) VALUES ('Sweden', 'SE');
+INSERT INTO public.country (name, country_code) VALUES ('Norway', 'NO');
